@@ -1,0 +1,20 @@
+theme = "Monokai Pro Ristretto"
+font-thicken = true
+cursor-style-blink = false
+link-url = true
+window-inherit-working-directory = true
+window-inherit-font-size = true
+window-theme = system
+clipboard-trim-trailing-spaces = true
+mouse-hide-while-typing = true
+macos-titlebar-proxy-icon = hidden
+macos-icon = custom-style
+macos-icon-frame = plastic
+macos-icon-ghost-color = FFFFFF
+macos-icon-screen-color = 000000
+#custom-shader = shaders/starfield-colors.glsl
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+#custom-shader = shaders/in-game-crt.glsl
+custom-shader = shaders/seascape.glsl
+custom-shader = shaders/seascape2.glsl
+#custom-shader = shaders/cyber-fuji.glsl

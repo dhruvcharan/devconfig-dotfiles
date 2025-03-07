@@ -2,3 +2,6 @@
 !.gitignore
 !ghostty/
 !nvim/
+!ghostty/**
+!nvim/**
+nvim/lazy-lock.json
