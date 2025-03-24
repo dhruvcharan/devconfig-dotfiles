@@ -24,6 +24,7 @@ return {
 			ensure_installed = {
 				"json",
 				"javascript",
+				"matlab",
 				"tsx",
 				"yaml",
 				"html",
