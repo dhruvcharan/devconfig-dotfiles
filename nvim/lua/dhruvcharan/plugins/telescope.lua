@@ -55,5 +55,7 @@ return {
 		keymap.set("n", "<leader>f?", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
 		keymap.set("n", "<leader>f*", "<cmd>Telescope lsp_references<cr>", { desc = "Find references" })
 		keymap.set("n", "<leader>f:", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+		keymap.set("n", "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<cr>", { desc = "Find symbols in workspace" })
+		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find TODOs in project" })
 	end,
 }
