@@ -17,7 +17,7 @@ opt.wrap = false
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
-opt.cursorline = true
+opt.cursorline = true -- highlight the current line
 
 -- turn on termguicolors for tokyonight colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
@@ -37,3 +37,11 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+opt.mouse = "a" -- enable mouse in all modes
+
+opt.scrolloff = 8 -- keep 8 lines visible when scrolling
+opt.sidescrolloff = 8 -- keep 8 columns visible when scrolling horizontally
+
+opt.linebreak = true -- wrap lines at word boundaries
+opt.breakindent = true -- visually indent wrapped lines

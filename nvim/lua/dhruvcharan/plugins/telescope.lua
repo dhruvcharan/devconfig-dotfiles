@@ -51,5 +51,9 @@ return {
 		keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Find keymaps" })
 		keymap.set("n", "<leader>fg", "<cmd>Telescope git_status<cr>", { desc = "Find changed git files" })
 		keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Find diagnostics" })
+		keymap.set("n", "<leader>f/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Fuzzy find in current buffer" })
+		keymap.set("n", "<leader>f?", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+		keymap.set("n", "<leader>f*", "<cmd>Telescope lsp_references<cr>", { desc = "Find references" })
+		keymap.set("n", "<leader>f:", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
 	end,
 }

@@ -1,7 +1,7 @@
 return {
   {
     "folke/tokyonight.nvim",
-    priority = 1000, -- make sure to load this before all the other start plugins
+    priority = 1000, 
     config = function()
       local bg = "#011628"
       local bg_dark = "#011423"
