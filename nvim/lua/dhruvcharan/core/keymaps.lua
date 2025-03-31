@@ -37,7 +37,25 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Go to next buffer" }) -- next buffer
 keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Go to previous buffer" }) -- previous buffer
-keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete current buffer" })
+
+-- Modified buffer delete with confirmation
+keymap.set("n", "<leader>bd", function()
+  if vim.bo.modified then
+    local choice = vim.fn.confirm("Buffer has unsaved changes. Save?", "&Yes\n&No\n&Cancel")
+    if choice == 1 then     -- Yes
+      vim.cmd("write")
+      vim.cmd("bdelete")
+    elseif choice == 2 then -- No
+      vim.cmd("bdelete!")
+    end
+    -- If choice == 3 (Cancel), do nothing
+  else
+    vim.cmd("bdelete")
+  end
+end, { desc = "Delete buffer with confirmation" })
+
+-- List all buffers and prompt for a number
+keymap.set("n", "<leader>bl", ":ls<CR>:b ", { desc = "List buffers and switch" })
 
 keymap.set("n", "<Tab>", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<S-Tab>", "<cmd>tabp<CR>", { desc = "Go to previous tab" })

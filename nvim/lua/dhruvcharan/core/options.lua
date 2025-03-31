@@ -10,6 +10,7 @@ opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
+opt.confirm = true -- confirm before closing unsaved files
 
 opt.wrap = false
 
@@ -45,3 +46,8 @@ opt.sidescrolloff = 8 -- keep 8 columns visible when scrolling horizontally
 
 opt.linebreak = true -- wrap lines at word boundaries
 opt.breakindent = true -- visually indent wrapped lines
+
+-- Buffer handling
+opt.hidden = true       -- Allow modified buffers in background
+opt.autowriteall = true -- Auto-save when switching buffers or closing vim
+opt.confirm = true      -- Ask for confirmation when handling unsaved or read-only files
