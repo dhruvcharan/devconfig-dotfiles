@@ -5,13 +5,13 @@ return {
 
     auto_session.setup({
       log_level = "error",
-      auto_session_enable_last_session = true, -- automatically load last session
+      auto_session_enable_last_session = false, -- Changed to false to prioritize directory-specific sessions
       auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
       auto_session_enabled = true,
       auto_save_enabled = true,
       auto_restore_enabled = true, -- enable automatic session restoration
       auto_session_use_git_branch = true, -- different sessions per git branch
-      auto_session_suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents", "~/Desktop/" },
+      auto_session_suppress_dirs = { "~/", "~/Dev/", "~/Downloads", "~/Documents"},
       
       -- Custom hooks to ensure clean session saving/loading
       pre_save_cmds = {
@@ -34,8 +34,8 @@ return {
 
     local keymap = vim.keymap
 
-    keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
-    keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+    keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore session for current directory
+    keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save session for current directory
     
     vim.api.nvim_create_user_command("SessionDelete", function()
       auto_session.DeleteSession()
@@ -82,7 +82,6 @@ return {
       vim.cmd("xa")
     end, {})
     
-    -- Optional: Create a keymap for the clean exit command
     keymap.set("n", "<leader>qa", "<cmd>XA<CR>", { desc = "Save all and quit (clean exit)" })
   end,
 }
