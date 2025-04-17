@@ -15,6 +15,6 @@ macos-icon-screen-color = 000000
 #custom-shader = shaders/starfield-colors.glsl
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 #custom-shader = shaders/in-game-crt.glsl
-custom-shader = shaders/seascape.glsl
-custom-shader = shaders/seascape2.glsl
+#custom-shader = shaders/seascape.glsl
+#custom-shader = shaders/seascape2.glsl
 #custom-shader = shaders/cyber-fuji.glsl
