@@ -3,6 +3,39 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons", "folke/todo-comments.nvim" },
   opts = {
     focus = true,
+    use_diagnostic_signs = true, 
+    auto_open = false,
+    auto_close = true,
+    auto_preview = true,
+    icons = {
+      error = "",
+      warning = "",
+      hint = "󰠠",
+      information = "",
+      other = ""
+    },
+    fold_open = "",
+    fold_closed = "",
+    group = true,
+    padding = true,
+    action_keys = {
+      close = "q",
+      cancel = "<esc>",
+      refresh = "r",
+      jump = { "<cr>", "<tab>" },
+      open_split = { "<c-x>" },
+      open_vsplit = { "<c-v>" },
+      open_tab = { "<c-t>" },
+      toggle_mode = "m",
+      toggle_preview = "P",
+      hover = "K",
+      preview = "p",
+      close_folds = { "zM", "zm" },
+      open_folds = { "zR", "zr" },
+      toggle_fold = { "zA", "za" },
+      previous = "k",
+      next = "j"
+    },
   },
   cmd = "Trouble",
   keys = {
@@ -11,5 +44,6 @@ return {
     { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Open trouble quickfix list" },
     { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble location list" },
     { "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
+    { "<leader>xx", "<cmd>Trouble toggle<CR>", desc = "Toggle Trouble" },
   },
 }
