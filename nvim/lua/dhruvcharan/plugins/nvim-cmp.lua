@@ -2,20 +2,20 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-buffer", -- source for text in buffer
+    "hrsh7th/cmp-path", -- source for file system paths
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     {
-      "L3MON4D3/LuaSnip",
+      "L3MON4D3/LuaSnip", -- snippet engine
       version = "v2.*",
       build = "make install_jsregexp",
     },
-    "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
-    "onsails/lspkind.nvim",
-    "MunifTanjim/nui.nvim", -- Add nui.nvim dependency
+    "saadparwaiz1/cmp_luasnip", -- for autocompletion
+    "rafamadriz/friendly-snippets", -- useful snippets
+    "onsails/lspkind.nvim", -- vs-code like pictograms
+    "MunifTanjim/nui.nvim", -- UI component library for Neovim
   },
   config = function()
     local cmp = require("cmp")
@@ -23,6 +23,7 @@ return {
     local lspkind = require("lspkind")
     local nui_popup = require("nui.popup")
 
+    -- load friendly-snippets
     require("luasnip.loaders.from_vscode").lazy_load()
     require("luasnip.loaders.from_snipmate").lazy_load()
     require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })

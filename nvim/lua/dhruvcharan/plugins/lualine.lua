@@ -64,10 +64,27 @@ return {
 						sources = { "nvim_diagnostic" },
 						symbols = { error = " ", warn = " ", info = " ", hint = " " },
 					},
-					{ "filename", path = 1 }, -- Show full file path
+					{ "filename", path = 3 }, -- Show full file path
 				},
 				lualine_x = {
 					{ lazy_status.updates, cond = lazy_status.has_updates, color = { fg = "#ff9e64" } },
+					{
+						function()
+							local venv = os.getenv("CONDA_DEFAULT_ENV") or os.getenv("VIRTUAL_ENV")
+							return venv and (" " .. vim.fn.fnamemodify(venv, ":t")) or ""
+						end,
+						color = { fg = colors.green },
+					},
+					{
+						function()
+							local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
+							if next(clients) == nil then
+								return "No LSP"
+							end
+							return "  " .. clients[1].name
+						end,
+						color = { fg = colors.violet },
+					},
 					{ "filesize" },
 					{ "encoding" },
 					{ "fileformat" },

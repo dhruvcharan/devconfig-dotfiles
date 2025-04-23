@@ -53,7 +53,7 @@ return {
 					scope_incremental = false,
 					node_decremental = "<bs>",
 				},
-			 },
+			},
 			textobjects = {
 				select = {
 					enable = true,

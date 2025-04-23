@@ -1,8 +1,8 @@
 return {
   "rmagatti/auto-session",
+  enabled = false,
   config = function()
     local auto_session = require("auto-session")
-
     auto_session.setup({
       log_level = "error",
       auto_session_enable_last_session = false, -- Changed to false to prioritize directory-specific sessions

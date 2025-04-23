@@ -62,5 +62,23 @@ return {
 		keymap.set("n", "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<cr>", { desc = "Find symbols in workspace" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find TODOs in project" })
 		keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>", { desc = "Find projects" })
+
+		-- Search in nvim config files
+		local nvim_config_dir = "~/.config/nvim"
+		keymap.set("n", "<leader>fn", function()
+			require("telescope.builtin").find_files({
+				prompt_title = "Neovim Config",
+				cwd = nvim_config_dir,
+				hidden = true,
+			})
+		end, { desc = "Find in Neovim config" })
+
+		-- Search for text in nvim config files
+		keymap.set("n", "<leader>fN", function()
+			require("telescope.builtin").live_grep({
+				prompt_title = "Search in Neovim Config",
+				cwd = nvim_config_dir,
+			})
+		end, { desc = "Search in Neovim config" })
 	end,
 }

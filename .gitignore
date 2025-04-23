@@ -5,3 +5,5 @@
 !ghostty/**
 !nvim/**
 nvim/lazy-lock.json
+nvim/lua/dhruvcharan/plugins/images/
+nvim/lua/dhruvcharan/plugins/.DS_Store
