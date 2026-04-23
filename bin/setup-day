@@ -1,0 +1,37 @@
+#!/bin/zsh
+
+# Source zshrc to get cal-add
+source ~/.zshrc
+
+# --- Morning Routine (Early Wakeup Habits) ---
+# 07:00 AM: Hydrate + Sunlight (Crucial for setting circadian rhythm)
+cal-add "🚰 Hydrate & ☀️ Sunlight" "07:00"
+
+# 07:15 AM: Physical Primer (Stretch, Yoga, or a quick walk)
+cal-add "🧘 Physical Primer / Movement" "07:15"
+
+# 07:45 AM: High-Protein Breakfast + Plan Day
+cal-add "🍳 Breakfast & 📋 Intent Setting" "07:45"
+
+# 08:30 AM: Buffer / Commute / Read
+cal-add "📖 Personal Growth / Buffer" "08:30"
+
+# --- Professional Schedule ---
+# Morning
+cal-add "🤝 Morning Meeting" "09:00"
+cal-add "🧠 Morning Debrief" "09:30"
+cal-add "🚀 Deep Work: Block 1" "09:45"
+cal-add "🍱 Lunch Break" "10:30"
+
+# Afternoon (Modular Blocks)
+cal-add "🚀 Deep Work: Block 2" "11:15"
+cal-add "🤝 Mid-day Meeting" "12:00"
+cal-add "🚀 Deep Work: Block 3" "12:30"
+cal-add "🚀 Deep Work: Block 4" "13:30"
+cal-add "🚀 Deep Work: Block 5" "14:30"
+cal-add "🚀 Deep Work: Block 6" "15:30"
+
+# Evening & EOD
+cal-add "📝 EOD Debrief & Agenda" "16:45"
+cal-add "📈 Trading System Project" "19:00"
+cal-add "📖 Reading Time" "21:30"

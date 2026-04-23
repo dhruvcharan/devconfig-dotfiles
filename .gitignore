@@ -1,0 +1,27 @@
+# Ignore everything by default
+*
+
+# Allow directories
+!bin/
+!gh/
+!ghostty/
+!nvim/
+!raycast-scripts/
+
+# Allow specific files in the root
+!zshrc
+!DEV_GUIDE.md
+!.gitignore
+
+# Unignore contents of allowed directories
+!bin/**
+!gh/**
+!ghostty/**
+!nvim/**
+!raycast-scripts/**
+
+# Common excludes
+**/*.swp
+**/.DS_Store
+**/node_modules/
+**/.git/
