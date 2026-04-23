@@ -6,6 +6,7 @@
 !gh/
 !ghostty/
 !nvim/
+!nvim-minimal
 !raycast-scripts/
 
 # Allow specific files in the root
