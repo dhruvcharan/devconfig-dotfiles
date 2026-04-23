@@ -37,4 +37,8 @@ cal-add() {
   osascript ~/.config/bin/cal-add.scpt "$1" "$2"
 }
 
+# Neovim Configurations
+alias nv='NVIM_APPNAME=nvim nvim'
+alias npack='NVIM_APPNAME=neovim-pack nvim'
+
 alias setup-day='~/.config/bin/setup-day'

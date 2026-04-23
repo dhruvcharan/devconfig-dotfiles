@@ -8,6 +8,7 @@
 !nvim/
 !nvim-minimal
 !raycast-scripts/
+!neovim-pack/
 
 # Allow specific files in the root
 !zshrc
