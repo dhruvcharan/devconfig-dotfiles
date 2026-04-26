@@ -99,6 +99,7 @@ M.setup = function()
   require('mini.pairs').setup()
   require('mini.comment').setup()
   require('mini.bufremove').setup()
+  require('mini.tabline').setup()
   require('mini.statusline').setup({ use_icons = true, set_vim_settings = false })
 
   -- 4. LSP & Completion
@@ -151,7 +152,24 @@ M.setup = function()
   require('gitsigns').setup()
 
   -- 8. UI & Others
-  require('which-key').setup()
+  local wk = require('which-key')
+  wk.setup({
+    preset = "modern",
+    delay = 300,
+  })
+  wk.add({
+    { "<leader>f", group = "Find/Files" },
+    { "<leader>s", group = "Search/Snacks" },
+    { "<leader>w", group = "Windows" },
+    { "<leader>x", group = "Trouble/Diagnostics" },
+    { "<leader>t", group = "Test" },
+    { "<leader>d", group = "Debug" },
+    { "<leader>g", group = "Git" },
+    { "<leader>a", group = "AI (Gemini)" },
+    { "<leader>c", group = "Code" },
+    { "<leader>q", group = "Session/Quit" },
+    { "<leader>o", group = "Obsidian" },
+  })
   require('todo-comments').setup()
   require('flash').setup()
   require('oil').setup({ default_file_explorer = true })

@@ -21,6 +21,7 @@
 !ghostty/**
 !nvim/**
 !raycast-scripts/**
+!neovim-pack/**
 
 # Common excludes
 **/*.swp
