@@ -76,7 +76,13 @@ M.setup = function()
   -- 2. Snacks (Priority)
   require('snacks').setup({
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = {
+      enabled = true,
+      sections = {
+        { section = "header" },
+        { section = "keys", gap = 1, padding = 1 },
+      },
+    },
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
@@ -100,7 +106,23 @@ M.setup = function()
   require('mini.comment').setup()
   require('mini.bufremove').setup()
   require('mini.tabline').setup()
-  require('mini.statusline').setup({ use_icons = true, set_vim_settings = false })
+  
+  local statusline = require('mini.statusline')
+  statusline.setup({
+    use_icons = true,
+    set_vim_settings = false,
+  })
+  -- Customizing the statusline to include Copilot (from nvim-minimal)
+  statusline.section_location = function()
+    local copilot_status = ""
+    if package.loaded["copilot"] then
+      local clients = vim.lsp.get_active_clients({ name = "copilot" })
+      if clients and #clients > 0 then
+        copilot_status = "  "
+      end
+    end
+    return copilot_status .. "%2l:%-2v"
+  end
 
   -- 4. LSP & Completion
   local cmp = require('cmp')
@@ -128,15 +150,17 @@ M.setup = function()
   require('fidget').setup({})
 
   -- 5. Treesitter
-  require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'lua', 'python', 'go', 'typescript', 'markdown' },
-    highlight = { enable = true },
-    indent = { enable = true },
-    incremental_selection = {
-      enable = true,
-      keymaps = { init_selection = '<leader>v', node_incremental = '<leader>v', node_decremental = '<bs>' },
-    },
-  })
+  pcall(function()
+    require('nvim-treesitter.configs').setup({
+      ensure_installed = { 'lua', 'python', 'go', 'typescript', 'markdown' },
+      highlight = { enable = true },
+      indent = { enable = true },
+      incremental_selection = {
+        enable = true,
+        keymaps = { init_selection = '<leader>v', node_incremental = '<leader>v', node_decremental = '<bs>' },
+      },
+    })
+  end)
 
   -- 6. Formatting & Linting
   require('conform').setup({
@@ -155,7 +179,15 @@ M.setup = function()
   local wk = require('which-key')
   wk.setup({
     preset = "modern",
-    delay = 300,
+    delay = function(ctx)
+      return ctx.plugin and 0 or 200
+    end,
+    icons = {
+      rules = false, -- Disable default rules if they cause issues
+    },
+    triggers = {
+      { "<leader>", mode = { "n", "v" } },
+    },
   })
   wk.add({
     { "<leader>f", group = "Find/Files" },
@@ -169,6 +201,7 @@ M.setup = function()
     { "<leader>c", group = "Code" },
     { "<leader>q", group = "Session/Quit" },
     { "<leader>o", group = "Obsidian" },
+    { "<leader>p", group = "Project/Pickers" },
   })
   require('todo-comments').setup()
   require('flash').setup()

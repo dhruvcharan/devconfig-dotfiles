@@ -4,6 +4,16 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Fix for leader key behavior (Space moving cursor)
+map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- ## Smart Window Navigation ##
+-- Seamlessly move between windows and Snacks explorer
+map('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window' })
+map('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window' })
+map('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window' })
+map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window' })
+
 -- ## Navigation & File Management (Oil, Snacks Explorer) ##
 map('n', '-', '<CMD>Oil<CR>', { desc = 'Open Parent Directory (Oil)' })
 map('n', '<leader>fo', '<CMD>Oil --float<CR>', { desc = 'Oil Float' })
@@ -56,13 +66,15 @@ map('n', '<leader>:', '<Cmd>lua Snacks.picker.command_history()<CR>', { desc = '
 -- Search Group
 map('n', '<leader>ff', '<Cmd>lua Snacks.picker.files()<CR>', { desc = 'Find Files' })
 map('n', '<leader>fg', '<Cmd>lua Snacks.picker.git_files()<CR>', { desc = 'Find Git Files' })
+map('n', '<leader>fm', function() Snacks.picker.grep({ glob = "*.md", title = "Search Markdown" }) end, { desc = 'Search Markdown' })
 map('n', '<leader>fr', '<Cmd>lua Snacks.picker.recent()<CR>', { desc = 'Recent' })
-map('n', '<leader>fw', '<Cmd>lua Snacks.picker.grep_word()<CR>', { desc = 'Visual selection or word', mode = { 'n', 'x' } })
+map({ 'n', 'x' }, '<leader>fw', '<Cmd>lua Snacks.picker.grep_word()<CR>', { desc = 'Visual selection or word' })
 map('n', '<leader>fs', '<Cmd>lua Snacks.picker.lsp_symbols()<CR>', { desc = 'LSP Symbols' })
 map('n', '<leader>fd', '<Cmd>lua Snacks.picker.diagnostics()<CR>', { desc = 'Diagnostics' })
 map('n', '<leader>sR', '<Cmd>lua Snacks.picker.resume()<CR>', { desc = 'Resume' })
 map('n', '<leader>su', '<Cmd>lua Snacks.picker.undo()<CR>', { desc = 'Undo History' })
 map('n', '<leader>sp', '<Cmd>lua Snacks.picker.pickers()<CR>', { desc = 'Pickers' })
+map('n', '<leader>P', '<Cmd>lua Snacks.picker.commands()<CR>', { desc = 'Command Palette' })
 map('n', '<leader>sk', '<Cmd>lua Snacks.picker.keymaps()<CR>', { desc = 'Keymaps' })
 map('n', '<leader>th', '<Cmd>lua Snacks.picker.colorschemes()<CR>', { desc = 'Select Theme' })
 
@@ -117,6 +129,12 @@ map('v', '<leader>ar', function()
   })
 end, { desc = 'Refactor with Gemini' })
 
+-- ## Buffer & Session Management ##
+map('n', '<leader>bd', '<Cmd>lua Snacks.bufdelete()<CR>', { desc = 'Delete Buffer' })
+map('n', '<leader>bo', '<Cmd>%bd|e#|bd#<CR>', { desc = 'Delete Other Buffers' })
+map('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Save File' })
+map('n', '<leader>q', '<Cmd>q<CR>', { desc = 'Quit Neovim' })
+
 -- ## UI Toggles ##
 map('n', '<leader>sv', '<Cmd>source $MYVIMRC<CR>', { desc = 'Source Neovim Config' })
 map('n', '<leader>cc', '<Cmd>lua Snacks.terminal("cal-today")<CR>', { desc = 'Show Today\'s OS Calendar' })
@@ -124,18 +142,8 @@ map('n', '<leader>z', '<Cmd>lua Snacks.zen()<CR>', { desc = 'Toggle Zen Mode' })
 map('n', '<leader>Z', '<Cmd>lua Snacks.zen.zoom()<CR>', { desc = 'Toggle Zoom' })
 map('n', '<leader>n', '<Cmd>lua Snacks.notifier.show_history()<CR>', { desc = 'Notification History' })
 
--- ## Buffer & Window Management ##
-map('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window' })
-map('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window' })
-map('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window' })
-map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window' })
+-- ## UI Toggles ##
 
-map('n', '<leader>bd', '<Cmd>lua Snacks.bufdelete()<CR>', { desc = 'Delete Buffer' })
-map('n', '<leader>bo', '<Cmd>%bd|e#|bd#<CR>', { desc = 'Delete Other Buffers' })
-map('n', '<leader>w', '<Cmd>w<CR>', { desc = 'Save File' })
-map('n', '<leader>q', '<Cmd>q<CR>', { desc = 'Quit Neovim' })
-
--- ## Search & Other ##
 map('n', '<leader>h', '<Cmd>noh<CR>', { desc = 'Clear Search Highlight' })
 
 -- ## Obsidian ##

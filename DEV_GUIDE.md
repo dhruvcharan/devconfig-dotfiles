@@ -50,7 +50,7 @@ This guide defines the optimal workflow for your specific environment: **Ghostty
 
 ## 🧠 Brain & Pulse (Time Blocking & Notes)
 
-Your environment is now your **Cognitive Command Center**, integrating **Obsidian** directly into your terminal workflow.
+Your environment is now your **Cognitive Command Center**, integrating **Obsidian** directly into your temrirnal workflow.
 
 ### 1. The Daily Protocol
 - **Start the Day:** Press `<leader>od` in Neovim. This generates your **Time-Blocked Daily Note** from a template.
@@ -101,3 +101,23 @@ Your workflow now extends beyond the Mac and into your pocket.
 ---
 
 *“Speed is a feature. Simplicity is a choice.” — Your Dev Env*
+
+## 🚀 Updated Neovim Workflow (2026-04-26)
+
+### Navigation & Buffers
+- `H` / `L`: Quick buffer switching (via `mini.tabline`).
+- `]d` / `[d`: Diagnostic navigation.
+- `]h` / `[h`: Git hunk navigation.
+- `<leader>w|` / `<leader>w-`: Vertical/Horizontal splits.
+
+### AI & Gemini
+- `<C-g>` / `<leader>ai`: Toggle Gemini in a **Right Split** (35% width).
+- `<leader>ar`: Refactor visual selection with Gemini.
+
+### Enhanced Search
+- `<leader>fm`: **Search specifically within all .md files in the project.**
+- `<leader>su`: Visual undo history.
+- `<leader>sR`: Resume last search.
+
+### Discoverability
+- Press `<leader>` and wait for the **Which-key** hint window to see all categorized actions.

@@ -36,6 +36,7 @@ opt.conceallevel = 2     -- Hide * markup for bold and italic, etc.
 
 -- ## Performance ##
 opt.updatetime = 250 -- ms to wait for trigger "CursorHold"
+opt.timeoutlen = 300 -- ms to wait for a mapped sequence to complete
 opt.undofile = true  -- Persistent undo
 
 -- ## Splits ##

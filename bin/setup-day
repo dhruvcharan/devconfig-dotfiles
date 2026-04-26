@@ -1,0 +1,45 @@
+#!/bin/zsh
+
+# 1. Add Workout to Calendar (if not already there)
+today_date=$(date +"%m/%d/%Y")
+start_time="6:00 AM"
+end_time="7:30 AM"
+
+# Check if Workout already exists today
+has_workout=$(osascript -e "tell application \"Calendar\" to tell calendar \"Home\" to count (every event whose start date is greater than or equal to (date \"$today_date $start_time\") and start date is less than (date \"$today_date $end_time\") and summary contains \"Workout\")")
+
+if [[ "$has_workout" == "0" ]]; then
+  echo "🏋️‍♂️ Adding Workout to Calendar..."
+  osascript ~/.config/bin/cal-add.scpt "Workout 🏋️‍♂️" "6:00 AM to 7:30 AM"
+fi
+
+echo "🚀 Setting up your day..."
+
+# 2. Display Schedule
+echo "\n📅 Today's Schedule:"
+osascript -e 'set today to (current date)' -e 'set time of today to 0' -e 'set tomorrow to today + (24 * 60 * 60)' -e 'tell application "Calendar"' -e 'try' -e 'set targetCal to calendar "Home"' -e 'on error' -e 'set targetCal to first calendar' -e 'end try' -e 'tell targetCal' -e 'set allEvents to {}' -e 'set theEvents to (every event whose start date is greater than or equal to today and start date is less than tomorrow)' -e 'repeat with evt in theEvents' -e 'copy (summary of evt & " | " & (time string of (get start date of evt))) to end of allEvents' -e 'end repeat' -e 'return allEvents' -e 'end tell' -e 'end tell'
+
+# 3. Create/Open Daily Note with Workout block
+today=$(date +"%Y-%m-%d")
+note_file="$HOME/Obsidian_MD/dailies/$today.md"
+
+if [[ ! -f "$note_file" ]]; then
+  cat << EON > "$note_file"
+# 📅 $today
+
+## 🚀 Goals
+- [ ] Morning Workout 🏋️‍♂️
+- [ ] Deep Work Session 1
+- [ ] Deep Work Session 2
+
+## 🗓️ Schedule
+- 06:00 - 07:30 | 🏋️‍♂️ Workout
+- 07:30 - 08:30 | 🚿 Shower & Fuel
+- 08:30 - 12:00 | 💻 Deep Work Block 1
+- 12:00 - 13:00 | 🍱 Lunch
+- 13:00 - 17:00 | 💻 Deep Work Block 2
+EON
+fi
+
+echo "\n📓 Opening Daily Note: $today.md"
+NVIM_APPNAME=neovim-pack nvim "$note_file"
